@@ -6,11 +6,19 @@ const port = 3000;
 const hello = [
   {
     id: 1,
-    name: "nguyen",
+    name: "Đá banh",
+  },
+  {
+    id: 3,
+    name: "Bóng rỗ",
   },
   {
     id: 2,
-    name: "nguyen2",
+    name: "Cầu lông",
+  },
+  {
+    id: 2,
+    name: "Câu cá",
   },
 ];
 
@@ -22,7 +30,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
-  res.render("index");
+  res.render("index1", { hello });
 });
 
 app.get("/:id", (req, res) => {
