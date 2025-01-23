@@ -10,11 +10,14 @@ app.set("view engine", "ejs");
 app.set("views", "./views");
 
 app.use(express.static("Public"));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }));
 app.use('/',productRouter)
 
 app.listen(port, () => {
   console.log("chao");
 });
+
+
+exports.urls = "http://Admintft.onrender.com";
+// "http://localhost:3000"

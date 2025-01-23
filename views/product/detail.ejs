@@ -1,52 +1,52 @@
-<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Detail Prodcut</title>
-    <link rel="stylesheet" href="/css/style.css" />
-  </head>
-  <body>
-    <div class="wrapper-header">
-      <div class="box-branch">
-        <div class="logo-header">
-          <img class="image-logo" src="/image/logo.png" alt="Header" />
-        </div>
-        <div class="text-branch" onclick="window.location.href = '/'">
-          Ninedev
-        </div>
-      </div>
-      <div class="box-nav">
-        <div class="nav-link" onclick="window.location.href = '/products/'">
-          Home
-        </div>
-        <div class="nav-link" onclick="window.location.href = '/products/create'">Create</div>
-      </div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="flex items-center justify-center min-h-screen bg-white">
+    <div class="absolute top-4 right-4">
+        <button class="border-2 border-black rounded-md px-4 py-1 text-black" onclick = "window.location.href = 'http://localhost:3000/'">
+            Back
+        </button>
     </div>
-    <div class="wrapper-detail">
-      <div id="productId" style="display: none;"><%= product.id %></div>
-      <h3>Product name: <%= product.name %></h3>
-      <h4>Product price: <%= product.price %></h3>
-      <img src="<%= product.image %>" width="100%" height="auto">
-      <button id="deleteProduct">Delete</button>
+    <div class="flex flex-col items-center">
+        <div id="tes" style="display: none;"><%= hello[0].id %></div>
+        <div class="border-2 border-black rounded-lg p-8">
+            <div class="mb-4">
+                <label class="block text-orange-500 mb-2">Name: <%= hello[0].name %></label>
+                <hr class="border-t-2 border-orange-500">
+            </div>
+            <div class="mb-4">
+                <label class="block text-orange-500 mb-2">ID: <%= hello[0].id %></label>
+                <hr class="border-t-2 border-orange-500">
+            </div>
+            <div class="mb-4">
+                <label class="block text-orange-500 mb-2">Pass: <%= hello[0].pass %></label>
+                <hr class="border-t-2 border-orange-500">
+            </div>
+        </div>
+        <button class="mt-8 border-2 border-black rounded-md px-8 py-2 text-green-500 italic" id="deletetail">
+            Delete
+        </button>
     </div>
-  </body>
-
-  <script>
-    const productId = document.getElementById('productId').innerHTML;
-    document.getElementById('deleteProduct').addEventListener('click', () => {
-      fetch(`http://localhost:3000/products/detail/${productId}`, {
-        method: 'DELETE',
-        headers: {
-          'Content-type': 'application/json; charset=UTF-8'
-        },
-      })
-      .then((res) => res.json())
-      .then((json) => {
-        if (json == 200) {
-          window.location.href = '/products';
-        }
-      })
-    });
-  </script>
+</body>
+<script>
+    const dd = document.getElementById("tes").innerHTML;
+    document.getElementById('deletetail').addEventListener('click',()=>{
+        fetch(`http://Admintft.onrender.com/product/detail/${dd}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8'   
+            }
+        })
+        .then((res) => res.json())
+        .then((json)=>{
+            if((json == 200)){
+                window.location.href = '/'
+            }
+        })
+    })
+</script>
 </html>

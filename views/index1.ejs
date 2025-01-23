@@ -39,13 +39,35 @@
         background-color: #0053a3;
         transform: scale(1.05);
       }
+
+      .create-button {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background-color: #28a745;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 15px;
+        font-size: 14px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        text-decoration: none;
+      }
+
+      .create-button:hover {
+        background-color: #218838;
+      }
     </style>
   </head>
   <body>
     <div class="container">
       <% hello.forEach((x)=>{ %>
-      <h1><%= x.name %></h1>
+        <a href="product/detail/<%= x.id %>">
+          <h1><%= x.name %> and ID = <%= x.id %></h1>
+        </a>
       <% }) %>
     </div>
+    <a href="product/create" class="create-button">Create</a>
   </body>
 </html>

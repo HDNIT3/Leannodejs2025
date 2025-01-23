@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detail Prodcut</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .create-button {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background-color: #28a745;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 15px;
+        font-size: 14px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        text-decoration: none;
+      }
+
+      .create-button:hover {
+        background-color: #218838;
+      }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen bg-white">
+    <div class="w-full max-w-xs">
+        <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+            <div class="mb-4">
+                <label>Nhập name</label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="input1" type="text">
+            </div>
+            <div class="mb-4">
+                <label>Nhập id</label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="input2" type="text">
+            </div>
+            <div class="mb-4">
+                <label>Nhập pass</label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="input3" type="text">
+            </div>
+            <div class="flex items-center justify-center">
+                <button class="bg-red-800 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" id="Button1">
+                    Submit
+                </button>
+            </div>
+        </form>
+    </div>
+    <a href="/" class="create-button">Home</a>
+</body>
+<script>
+    let name1 = document.getElementById("input1")
+    let id1 = document.getElementById("input2")
+    let pass1 = document.getElementById("input3")
+    document.getElementById('Button1').addEventListener('click',()=>{
+        fetch(`http://Admintft.onrender.com/product/create/`, {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8'   
+            },
+            body: JSON.stringify({
+                name: name1.value,
+                id: id1.value,
+                pass: pass1.value,
+            })
+        })
+        .then((res) => res.json())
+        .then((json)=>{
+            if((json == 200)){
+                window.location.href = '/'
+            }
+        })
+    })
+</script>
+</html>
