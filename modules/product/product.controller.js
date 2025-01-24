@@ -29,6 +29,7 @@ exports.getAllproduct = (req, res) => {
 
 exports.getProductId = (req, res) => {
   const { id } = req.params;
+  console.log("get id",id)
   const he = hello.filter((x) => (x.id === parseInt(id)))
   res.render("product/detail", { hello:he });
 };
@@ -54,7 +55,6 @@ exports.CreateProduct = (req, res) => {
 
 exports.PostProduct = (req,res) => {
   try {
-    console.log(req.body)
     const { body } = req;
     hello.push({
       id: Number(body.id),
@@ -70,8 +70,25 @@ exports.PostProduct = (req,res) => {
 exports.deleteproduct = (req,res) =>{
   try {
     const {id} = req.params; 
+    console.log("delete",id)
     const index = hello.findIndex(x => x.id == id)
     hello.splice(index,1)
+    res.json(200)
+  } catch (error) {
+    res.json("error")
+  }
+}
+
+
+exports.putProduct = (req,res) => {
+  try {
+    const {body} = req;
+    const {id} = req.params;
+    console.log("Puts",id)
+    const index = hello.findIndex(x => x.id == id)
+    hello[index].id = parseInt(body.id);
+    hello[index].name = body.name;
+    hello[index].pass = body.pass;
     res.json(200)
   } catch (error) {
     res.json("error")

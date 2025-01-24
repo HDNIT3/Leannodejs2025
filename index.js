@@ -20,5 +20,5 @@ app.listen(port, () => {
 });
 
 
-// exports.urls = "http://Admintft.onrender.com";
+// exports.urls = "https://Admintft.onrender.com";
 // "http://localhost:3000"

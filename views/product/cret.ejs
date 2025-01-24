@@ -51,6 +51,8 @@
     <a href="/" class="create-button">Home</a>
 </body>
 <script>
+    const urls = "https://Admintft.onrender.com"
+
     let name1 = document.getElementById("input1")
     let id1 = document.getElementById("input2")
     let pass1 = document.getElementById("input3")
@@ -62,7 +64,7 @@
     const {id} = params1;
 
     const fetchProducApi = () => {
-        fetch(`https://admintft.onrender.com/apiproduct/detail/${id}`, {
+        fetch(`${urls}/apiproduct/detail/${id}`, {
             method: 'GET',
             headers: {
                 'Content-type': 'application/json; charset=UTF-8'   
@@ -82,23 +84,47 @@
 
 
     document.getElementById('Button1').addEventListener('click',()=>{
-        fetch(`https://admintft.onrender.com/product/create/`, {
-            method: 'POST',
-            headers: {
-                'Content-type': 'application/json; charset=UTF-8'   
-            },
-            body: JSON.stringify({
-                name: name1.value,
-                id: id1.value,
-                pass: pass1.value,
+        if(id){
+            console.log("Api have id")
+            fetch(`${urls}/editproduct/${id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-type': 'application/json; charset=UTF-8'   
+                },
+                body: JSON.stringify({
+                    name: name1.value,
+                    id: id1.value,
+                    pass: pass1.value,
+                })
             })
-        })
-        .then((res) => res.json())
-        .then((json)=>{
-            if((json == 200)){
-                window.location.href = '/'
-            }
-        })
+            .then((res) => res.json())
+            .then((json)=>{
+                if((json == 200)){
+                    window.location.href = '/'
+                }
+            })
+        }   
+        else{
+            console.log("Api haven't id")
+            fetch(`${urls}/product/create/`, {
+                method: 'POST',
+                headers: {
+                    'Content-type': 'application/json; charset=UTF-8'   
+                },
+                body: JSON.stringify({
+                    name: name1.value,
+                    id: id1.value,
+                    pass: pass1.value,
+                })
+            })
+            .then((res) => res.json())
+            .then((json)=>{
+                if((json == 200)){
+                    window.location.href = '/'
+                }
+            })
+        }
+        
     })
 </script>
 </html>
