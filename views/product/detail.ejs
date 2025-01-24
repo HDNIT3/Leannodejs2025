@@ -30,12 +30,15 @@
         <button class="mt-8 border-2 border-black rounded-md px-8 py-2 text-green-500 italic" id="deletetail">
             Delete
         </button>
+        <button class="mt-8 border-2 border-black rounded-md px-8 py-2 text-green-500 italic" id="update1" onclick= "window.location.href = '/product/create?id=<%= hello[0].id %>'">
+            Update
+        </button>
     </div>
 </body>
 <script>
     const dd = document.getElementById("tes").innerHTML;
     document.getElementById('deletetail').addEventListener('click',()=>{
-        fetch(`https://admintft.onrender.com/product/detail/${dd}`, {
+        fetch(`http://localhost:3000/product/detail/${dd}`, {
             method: 'DELETE',
             headers: {
                 'Content-type': 'application/json; charset=UTF-8'   

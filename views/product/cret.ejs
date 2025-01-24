@@ -54,8 +54,35 @@
     let name1 = document.getElementById("input1")
     let id1 = document.getElementById("input2")
     let pass1 = document.getElementById("input3")
+
+    const params1 = new Proxy(new URLSearchParams(window.location.search),{
+        get: (searchParams,prop) => searchParams.get(prop),
+    })
+    
+    const {id} = params1;
+
+    const fetchProducApi = () => {
+        fetch(`http://localhost:3000/apiproduct/detail/${id}`, {
+            method: 'GET',
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8'   
+            },
+        })
+        .then((res) => res.json())
+        .then((hello1)=>{
+            if (hello1.id){
+                name1.value = hello1.name;
+                id1.value = hello1.id;
+                pass1.value = hello1.pass;
+            }
+        })
+    }
+
+    fetchProducApi()
+
+
     document.getElementById('Button1').addEventListener('click',()=>{
-        fetch(`https://admintft.onrender.com/product/create/`, {
+        fetch(`http://localhost:3000/product/create/`, {
             method: 'POST',
             headers: {
                 'Content-type': 'application/json; charset=UTF-8'   

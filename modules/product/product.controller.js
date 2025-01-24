@@ -38,6 +38,16 @@ exports.getProductS = (req, res) => {
   res.json(a);
 };
 
+exports.getAPIproduct = (req,res) => {
+  try {
+    const {id} = req.params;
+    const hello1 = hello.find(x => x.id == id)
+    res.json(hello1)
+  } catch (error) {
+    res.json("Api error")
+  }
+}
+
 exports.CreateProduct = (req, res) => {
   res.render('product/cret')
 };

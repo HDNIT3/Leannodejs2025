@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
 const port = 3000;
+const open = require("open");
 
 const productRouter = require("./modules/product/product.router.js")
 
@@ -15,9 +16,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/',productRouter)
 
 app.listen(port, () => {
-  console.log("chao");
+  console.log('chao');
 });
 
 
-exports.urls = "http://Admintft.onrender.com";
+// exports.urls = "http://Admintft.onrender.com";
 // "http://localhost:3000"
