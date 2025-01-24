@@ -62,7 +62,7 @@
     const {id} = params1;
 
     const fetchProducApi = () => {
-        fetch(`http://localhost:3000/apiproduct/detail/${id}`, {
+        fetch(`https://admintft.onrender.com/apiproduct/detail/${id}`, {
             method: 'GET',
             headers: {
                 'Content-type': 'application/json; charset=UTF-8'   
@@ -82,7 +82,7 @@
 
 
     document.getElementById('Button1').addEventListener('click',()=>{
-        fetch(`http://localhost:3000/product/create/`, {
+        fetch(`https://admintft.onrender.com/product/create/`, {
             method: 'POST',
             headers: {
                 'Content-type': 'application/json; charset=UTF-8'   
